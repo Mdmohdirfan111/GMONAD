@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monad Mario Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.55.2/phaser.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <h1>Monad Mario Adventure</h1>
+            <div class="wallet-controls">
+                <button id="connectWalletButton">Connect Wallet</button>
+                <span id="walletAddress" style="display: none;"></span>
+                <button id="signGMONADButton" style="display: none;" disabled>Sign GMONAD</button>
+                <span id="gmonadStatus" style="display: none;"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Game Section -->
+    <main>
+        <!-- Start Screen -->
+        <div id="startScreen">
+            <h2>Welcome to Monad Mario!</h2>
+            <p>Connect your wallet and sign "GMONAD = GM" to start.</p>
+            <button id="startButton" style="display: none;">Start Game</button>
+        </div>
+
+        <!-- Game Container -->
+        <div id="gameContainer" style="display: none;">
+            <div class="game-header">
+                <span id="score">Score: 0</span>
+                <span id="levelDisplay">Level: 1</span>
+                <span id="onChainScore">On-Chain Score: 0</span>
+                <button id="pauseButton">Pause</button>
+            </div>
+            <canvas id="gameCanvas" width="800" height="400"></canvas>
+        </div>
+
+        <!-- Pause Screen -->
+        <div id="pauseScreen" style="display: none;">
+            <h2>Game Paused</h2>
+            <button id="resumeButton">Resume</button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" style="display: none;">
+            <h2>Game Over</h2>
+            <p id="finalScore"></p>
+            <button id="restartButton">Restart</button>
+        </div>
+
+        <!-- Level Complete Modal -->
+        <div id="levelCompleteModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2 id="levelCompleteTitle"></h2>
+                <button id="mintNFTButton">Mint Mission NFT</button>
+                <button id="nextLevelButton">Next Level</button>
+                <p id="transactionHash" style="display: none;"></p>
+            </div>
+        </div>
+
+        <!-- Transaction Modal -->
+        <div id="transactionModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>Transaction Successful</h2>
+                <p id="transactionHashDisplay"></p>
+                <p id="nftDetails" style="display: none;"></p>
+                <button id="closeTransactionModal">Close</button>
+            </div>
+        </div>
+
+        <!-- Leaderboard Section -->
+        <div id="leaderboard" style="display: none;">
+            <h2>Leaderboard</h2>
+            <ul id="leaderboardList"></ul>
+        </div>
+    </main>
+
+    <script src="game.js"></script>
+</body>
+</html>
